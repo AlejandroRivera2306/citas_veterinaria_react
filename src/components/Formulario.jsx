@@ -1,13 +1,16 @@
 import React, {useState , useEffect } from 'react'
 import Error from './Error';
 
+
 const Formulario = ({pacientes, setPacientes, paciente , setPaciente}) => {
     const [nombre,setNombre]= useState(' ');
     const [propietario,setPropietario]= useState(' ');
     const [email,setEmail]= useState(' ');
-    const [fecha,setFecha]= useState(' ');
+    // const [fecha,setFecha]= useState(' ');
+    const [fecha, setFecha] = useState(new Date().toISOString().substr(0, 10));
     const [sintomas,setSintomas]= useState(' ');
     const [error,setError]= useState(false);
+    
   useEffect(()=>{
     if (Object.keys(paciente).length >0){
      setNombre(paciente.nombre)
