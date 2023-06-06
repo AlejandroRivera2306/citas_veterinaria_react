@@ -22,6 +22,12 @@ const Formulario = ({pacientes, setPacientes, paciente , setPaciente}) => {
 
   }, [paciente])
 
+  // useEffect(()=>{
+  //   setPaciente
+
+  // },[])
+
+
     const generarId = () =>{
       const random = Math.random().toString(36).substr(2);
       const fecha = Date.now().toString(36);
@@ -51,11 +57,14 @@ const handleSubmit = (e)=>{
     const pacientesActualizados = pacientes.map(pacienteState => pacienteState.id === paciente.id 
       ? objetoPaciente : pacienteState)
       setPacientes( pacientesActualizados)
+      localStorage.setItem("pacientes",JSON.stringify(pacientesActualizados))
       setPaciente({})
+
   }else {
     //nuevo registro
     objetoPaciente.id = generarId()
     setPacientes([...pacientes, objetoPaciente]);
+    localStorage.setItem("pacientes",JSON.stringify([...pacientes, objetoPaciente]))
   }
   
   
